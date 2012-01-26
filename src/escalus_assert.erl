@@ -44,7 +44,9 @@ is_chat_message(Msg, Stanza) when is_binary(Msg) ->
     Msg = exmpp_message:get_body(Stanza).
 
 is_iq(Type, Stanza) ->
-    Type = exmpp_iq:get_type(Stanza).
+    Type = exmpp_iq:get_type(Stanza);
+is_iq(none, _Stanza) ->
+    ok.
 
 has_no_stanzas(Client) ->
     false = escalus_client:has_stanzas(Client).
